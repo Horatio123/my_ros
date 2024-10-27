@@ -34,6 +34,9 @@ ament_target_dependencies(moody_lifecycle_node rclcpp rclcpp_lifecycle)
 add_executable(lifecycle_pb src/lifecycle_pb.cpp)
 ament_target_dependencies(lifecycle_pb rclcpp rclcpp_lifecycle)
 
+add_executable(lifecycle_client src/lifecycle_client.cpp)
+ament_target_dependencies(lifecycle_client rclcpp rclcpp_lifecycle lifecycle_msgs)
+
 # target_include_directories(lifecycle_node PUBLIC
 #   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include;/opt/ros/foxy/include>
 #   $<INSTALL_INTERFACE:include>)
@@ -50,6 +53,9 @@ install(TARGETS moody_lifecycle_node
   DESTINATION lib/${PROJECT_NAME})
 
 install(TARGETS lifecycle_pb
+  DESTINATION lib/${PROJECT_NAME})
+
+install(TARGETS lifecycle_client
   DESTINATION lib/${PROJECT_NAME})
 
 
