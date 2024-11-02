@@ -6,7 +6,7 @@ class ComputePathActionServer : public ActionServer<behavior_msg::action::Comput
 {
 public:
   ComputePathActionServer()
-  : ActionServer("compute_path_to_pose")
+  : ActionServer("compute_path")
   {
     RCLCPP_INFO(this->get_logger(), "create server");
     RCLCPP_DEBUG(this->get_logger(), "create server test for debug");
