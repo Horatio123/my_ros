@@ -39,19 +39,27 @@ target_include_directories(decorator_nodes PUBLIC
   $<INSTALL_INTERFACE:include>)
 ament_target_dependencies(decorator_nodes behaviortree_cpp_v3)
 
+add_library(control_nodes STATIC src/pipeline_sequence.cpp)
+target_include_directories(control_nodes PUBLIC
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+  $<INSTALL_INTERFACE:include>)
+ament_target_dependencies(control_nodes behaviortree_cpp_v3)
+
 
 add_executable(tree_test src/tree_test.cpp)
 target_include_directories(tree_test PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
   $<INSTALL_INTERFACE:include>)
 ament_target_dependencies(tree_test behaviortree_cpp_v3)
-target_link_libraries(tree_test bt_sample_nodes decorator_nodes)
+target_link_libraries(tree_test bt_sample_nodes decorator_nodes control_nodes)
 
 install(TARGETS tree_test
   DESTINATION lib/${PROJECT_NAME})
 install(TARGETS bt_sample_nodes
   DESTINATION lib/${PROJECT_NAME})
 install(TARGETS decorator_nodes
+  DESTINATION lib/${PROJECT_NAME})
+install(TARGETS control_nodes
   DESTINATION lib/${PROJECT_NAME})
 
 

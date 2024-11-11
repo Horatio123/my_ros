@@ -5,6 +5,7 @@
 #ifdef MANUAL_STATIC_LINKING
 #include "dummy_node.hpp"
 #include "rate_controller.hpp"
+#include "pipeline_sequence.hpp"
 #endif
 
 using namespace BT;
@@ -24,13 +25,13 @@ static const char* xml_text = R"(
  <root main_tree_to_execute = "MainTree" >
 
      <BehaviorTree ID="MainTree">
-        <Sequence name="root_sequence">
+        <PipelineSequence name="root_sequence">
             <RateController hz="0.1">
               <CheckBattery   name="battery_ok"/>
             </RateController>
             <OpenGripper    name="open_gripper"/>
             <CloseGripper   name="close_gripper"/>
-        </Sequence>
+        </PipelineSequence>
      </BehaviorTree>
 
  </root>
@@ -71,6 +72,7 @@ int main()
                                std::bind(&GripperInterface::close, &gripper));
 
   factory.registerNodeType<nav2_behavior_tree::RateController>("RateController");
+  factory.registerNodeType<nav2_behavior_tree::PipelineSequence>("PipelineSequence");
 
 #else
   // Load dynamically a plugin and register the TreeNodes it contains
@@ -87,7 +89,11 @@ int main()
   // The tick is propagated to the children based on the logic of the tree.
   // In this case, the entire sequence is executed, because all the children
   // of the Sequence return SUCCESS.
+  std::cout<< "+++++++++++first tick"<<std::endl;
   tree.tickRootWhileRunning();
+  std::cout<< "++++++++++++second tick"<<std::endl;
+  tree.tickRootWhileRunning();
+
 
   return 0;
 }

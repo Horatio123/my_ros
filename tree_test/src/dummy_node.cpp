@@ -26,7 +26,8 @@ BT::NodeStatus CheckBattery() {
     rclcpp::Rate loop_rate(2s);
     loop_rate.sleep();
 
-    return BT::NodeStatus::RUNNING;    
+    // return BT::NodeStatus::RUNNING;
+    return BT::NodeStatus::SUCCESS;
 }
 BT::NodeStatus CheckTemperature()
 {
