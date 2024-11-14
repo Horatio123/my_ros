@@ -35,4 +35,23 @@ BT::NodeStatus CheckTemperature()
     return BT::NodeStatus::SUCCESS;
 }
 
+BT::NodeStatus CalculateGoal::tick()
+{
+  Position2D mygoal = {1.1, 2.3};
+  setOutput("goal", mygoal);
+  return NodeStatus::SUCCESS;
+}
+
+BT::NodeStatus PrintTarget::tick()
+  {
+    auto res = getInput<Position2D>("target");
+    if (!res)
+    {
+      throw RuntimeError("error reading port [target]:", res.error());
+    }
+    Position2D goal = res.value();
+    printf("Target positions: [ %.1f, %.1f ]\n", goal.x, goal.y);
+    return NodeStatus::SUCCESS;
+  }
+
 }

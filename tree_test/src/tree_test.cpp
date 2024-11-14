@@ -31,6 +31,10 @@ static const char* xml_text = R"(
             </RateController>
             <OpenGripper    name="open_gripper"/>
             <CloseGripper   name="close_gripper"/>
+            <CalculateGoal   goal="{GoalPosition}" />
+            <PrintTarget     target="{GoalPosition}" />
+            <SetBlackboard   output_key="OtherGoal" value="-1;3" />
+            <PrintTarget     target="{OtherGoal}" />
         </PipelineSequence>
      </BehaviorTree>
 
@@ -73,6 +77,8 @@ int main()
 
   factory.registerNodeType<nav2_behavior_tree::RateController>("RateController");
   factory.registerNodeType<nav2_behavior_tree::PipelineSequence>("PipelineSequence");
+  factory.registerNodeType<CalculateGoal>("CalculateGoal");
+  factory.registerNodeType<PrintTarget>("PrintTarget");
 
 #else
   // Load dynamically a plugin and register the TreeNodes it contains

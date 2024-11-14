@@ -27,7 +27,7 @@ RateController::RateController(
   first_time_(false)
 {
   double hz = 0.1;
-  // getInput("hz", hz);
+  getInput("hz", hz);
   std::cout << "--------hz is:  " << hz << std::endl;
   period_ = 1.0 / hz;
 }
