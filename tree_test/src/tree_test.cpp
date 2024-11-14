@@ -79,7 +79,8 @@ int main()
   factory.registerNodeType<nav2_behavior_tree::PipelineSequence>("PipelineSequence");
   factory.registerNodeType<CalculateGoal>("CalculateGoal");
   factory.registerNodeType<PrintTarget>("PrintTarget");
-
+  BT::Blackboard::Ptr blackboard_ = BT::Blackboard::create();
+  blackboard_->set<int>("number_of_cat", 2);
 #else
   // Load dynamically a plugin and register the TreeNodes it contains
   // it automated the registering step.
@@ -89,7 +90,7 @@ int main()
   // Trees are created at deployment-time (i.e. at run-time, but only once at the beginning).
   // The currently supported format is XML.
   // IMPORTANT: when the object "tree" goes out of scope, all the TreeNodes are destroyed
-  auto tree = factory.createTreeFromText(xml_text);
+  auto tree = factory.createTreeFromText(xml_text, blackboard_);
 
   // To "execute" a Tree you need to "tick" it.
   // The tick is propagated to the children based on the logic of the tree.
@@ -99,6 +100,9 @@ int main()
   tree.tickRootWhileRunning();
   std::cout<< "++++++++++++second tick"<<std::endl;
   tree.tickRootWhileRunning();
+  int num;
+  blackboard_->get("number_of_cat", num);
+  std::cout<< "main number_of_cat is "<< num << std::endl;
 
 
   return 0;

@@ -37,6 +37,9 @@ BT::NodeStatus CheckTemperature()
 
 BT::NodeStatus CalculateGoal::tick()
 {
+  auto num = config().blackboard->template get<int>("number_of_cat");
+  std::cout<< "CalculateGoal number_of_cat is " << num <<std::endl;
+  config().blackboard->set("number_of_cat", 3);
   Position2D mygoal = {1.1, 2.3};
   setOutput("goal", mygoal);
   return NodeStatus::SUCCESS;
