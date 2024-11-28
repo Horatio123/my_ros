@@ -22,30 +22,25 @@
 
 namespace nav2_behavior_tree
 {
-
-class RateController : public BT::DecoratorNode
-{
-public:
-  RateController(
-    const std::string & name,
-    const BT::NodeConfiguration & conf);
-
-  // Any BT node that accepts parameters must provide a requiredNodeParameters method
-  static BT::PortsList providedPorts()
+  class RateController : public BT::DecoratorNode
   {
-    return {
-      BT::InputPort<double>("hz", 10.0, "Rate")
-    };
-  }
+  public:
+    RateController(const std::string &name, const BT::NodeConfiguration &conf);
 
-private:
-  BT::NodeStatus tick() override;
+    // Any BT node that accepts parameters must provide a requiredNodeParameters method
+    static BT::PortsList providedPorts()
+    {
+      return {BT::InputPort<double>("hz", 10.0, "Rate")};
+    }
 
-  std::chrono::time_point<std::chrono::high_resolution_clock> start_;
-  double period_;
-  bool first_time_;
-};
+  private:
+    BT::NodeStatus tick() override;
 
-}  // namespace nav2_behavior_tree
+    std::chrono::time_point<std::chrono::high_resolution_clock> start_;
+    double period_;
+    bool first_time_;
+  };
 
-#endif  // NAV2_BEHAVIOR_TREE__PLUGINS__DECORATOR__RATE_CONTROLLER_HPP_
+} // namespace nav2_behavior_tree
+
+#endif // NAV2_BEHAVIOR_TREE__PLUGINS__DECORATOR__RATE_CONTROLLER_HPP_

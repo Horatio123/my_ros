@@ -34,7 +34,7 @@ ament_target_dependencies(client_node rclcpp example_interfaces)
 
 install(TARGETS service_node
   DESTINATION lib/${PROJECT_NAME})
-  install(TARGETS client_node
+install(TARGETS client_node
   DESTINATION lib/${PROJECT_NAME})
 
 if(BUILD_TESTING)

@@ -49,9 +49,9 @@ int main()
   BehaviorTreeFactory factory;
 
   /* There are two ways to register nodes:
-    *    - statically, i.e. registering all the nodes one by one.
-    *    - dynamically, loading the TreeNodes from a shared library (plugin).
-    * */
+   *    - statically, i.e. registering all the nodes one by one.
+   *    - dynamically, loading the TreeNodes from a shared library (plugin).
+   * */
 
 #ifdef MANUAL_STATIC_LINKING
   // Note: the name used to register should be the same used in the XML.
@@ -68,7 +68,7 @@ int main()
   // you may also use C++11 lambdas instead of std::bind
   factory.registerSimpleCondition("CheckBattery", std::bind(CheckBattery));
 
-  //You can also create SimpleActionNodes using methods of a class
+  // You can also create SimpleActionNodes using methods of a class
   GripperInterface gripper;
   factory.registerSimpleAction("OpenGripper",
                                std::bind(&GripperInterface::open, &gripper));
@@ -96,14 +96,13 @@ int main()
   // The tick is propagated to the children based on the logic of the tree.
   // In this case, the entire sequence is executed, because all the children
   // of the Sequence return SUCCESS.
-  std::cout<< "+++++++++++first tick"<<std::endl;
+  std::cout << "+++++++++++first tick" << std::endl;
   tree.tickRootWhileRunning();
-  std::cout<< "++++++++++++second tick"<<std::endl;
+  std::cout << "++++++++++++second tick" << std::endl;
   tree.tickRootWhileRunning();
   int num;
   blackboard_->get("number_of_cat", num);
-  std::cout<< "main number_of_cat is "<< num << std::endl;
-
+  std::cout << "main number_of_cat is " << num << std::endl;
 
   return 0;
 }
