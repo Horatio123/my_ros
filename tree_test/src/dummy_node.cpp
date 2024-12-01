@@ -28,8 +28,9 @@ namespace DummyNode
     rclcpp::Rate loop_rate(2s);
     loop_rate.sleep();
 
-    // return BT::NodeStatus::RUNNING;
-    return BT::NodeStatus::SUCCESS;
+    return BT::NodeStatus::RUNNING;
+    // return BT::NodeStatus::SUCCESS;
+    // return BT::NodeStatus::FAILURE;
   }
   BT::NodeStatus CheckTemperature()
   {

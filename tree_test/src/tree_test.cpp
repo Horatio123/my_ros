@@ -98,8 +98,8 @@ int main()
   // of the Sequence return SUCCESS.
   std::cout << "+++++++++++first tick" << std::endl;
   tree.tickRootWhileRunning();
-  std::cout << "++++++++++++second tick" << std::endl;
-  tree.tickRootWhileRunning();
+  // std::cout << "++++++++++++second tick" << std::endl;
+  // tree.tickRootWhileRunning();
   int num;
   blackboard_->get("number_of_cat", num);
   std::cout << "main number_of_cat is " << num << std::endl;
