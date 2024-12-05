@@ -18,7 +18,7 @@
 #include <string>
 #include "rclcpp/rclcpp.hpp"
 
-namespace node_utils
+namespace util
 {
 
 /// Replace invalid characters in a potential node name

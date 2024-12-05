@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "utils/node_utils.hpp"
+#include "ros_utils/node_utils.hpp"
 #include <chrono>
 #include <string>
 #include <algorithm>
@@ -24,7 +24,7 @@ using std::string;
 using std::replace_if;
 using std::isalnum;
 
-namespace node_utils
+namespace util
 {
 
 string sanitize_node_name(const string & potential_node_name)
