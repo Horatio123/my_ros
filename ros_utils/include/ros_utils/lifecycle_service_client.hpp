@@ -21,9 +21,9 @@
 
 #include "lifecycle_msgs/srv/change_state.hpp"
 #include "lifecycle_msgs/srv/get_state.hpp"
-#include "nav2_util/service_client.hpp"
+#include "ros_utils/service_client.hpp"
 
-namespace nav2_util
+namespace util
 {
 
 /// Helper functions to interact with a lifecycle node.
@@ -58,6 +58,6 @@ protected:
   ServiceClient<lifecycle_msgs::srv::GetState> get_state_;
 };
 
-}  // namespace nav2_util
+}  // namespace util
 
 #endif  // NAV2_UTIL__LIFECYCLE_SERVICE_CLIENT_HPP_

@@ -19,12 +19,12 @@
 
 #include "lifecycle_msgs/srv/change_state.hpp"
 #include "lifecycle_msgs/srv/get_state.hpp"
-#include "nav2_util/lifecycle_service_client.hpp"
+#include "ros_utils/lifecycle_service_client.hpp"
 
 using std::string;
 using lifecycle_msgs::msg::Transition;
 
-namespace nav2_util
+namespace util
 {
 
 #define RETRY(fn, retries) \
@@ -98,4 +98,4 @@ void reset_lifecycle_nodes(
   }
 }
 
-}  // namespace nav2_util
+}  // namespace util

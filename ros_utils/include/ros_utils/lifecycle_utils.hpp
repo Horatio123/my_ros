@@ -18,9 +18,9 @@
 #include <vector>
 #include <string>
 #include <chrono>
-#include "nav2_util/string_utils.hpp"
+#include "ros_utils/string_utils.hpp"
 
-namespace nav2_util
+namespace util
 {
 
 /// Transition the given lifecycle nodes to the ACTIVATED state in order

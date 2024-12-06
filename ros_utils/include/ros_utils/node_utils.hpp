@@ -107,6 +107,6 @@ std::string get_plugin_type_param(
   return plugin_type;
 }
 
-}  // namespace nav2_util
+}  // namespace util
 
 #endif  // NAV2_UTIL__NODE_UTILS_HPP_

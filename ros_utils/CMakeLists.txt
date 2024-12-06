@@ -24,7 +24,7 @@ find_package(lifecycle_msgs REQUIRED)
 # further dependencies manually.
 # find_package(<dependency> REQUIRED)
 
-add_library(utils STATIC src/node_utils.cpp src/lifecycle_node.cpp src/node_thread.cpp)
+add_library(utils STATIC src/node_utils.cpp src/lifecycle_node.cpp src/node_thread.cpp src/lifecycle_service_client.cpp src/string_utils.cpp src/lifecycle_utils.cpp)
 target_include_directories(utils PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
   $<INSTALL_INTERFACE:include>)
@@ -34,21 +34,38 @@ add_executable(utils_test src/utils_test.cpp)
 target_include_directories(utils_test PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
   $<INSTALL_INTERFACE:include>)
-ament_target_dependencies(utils_test)
 target_link_libraries(utils_test utils)
 
-add_executable(lifecycle_test src/lifecycle_test.cpp)
-target_include_directories(lifecycle_test PUBLIC
+add_executable(lifecycle_node_test src/lifecycle_node_test.cpp)
+target_include_directories(lifecycle_node_test PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
   $<INSTALL_INTERFACE:include>)
-ament_target_dependencies(lifecycle_test)
-target_link_libraries(lifecycle_test utils)
+target_link_libraries(lifecycle_node_test utils)
+
+add_executable(lifecycle_service_test src/lifecycle_service_test.cpp)
+target_include_directories(lifecycle_service_test PUBLIC
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+  $<INSTALL_INTERFACE:include>)
+target_link_libraries(lifecycle_service_test utils)
+
+add_executable(lifecycle_up_cmd src/lifecycle_bringup_commandline.cpp)
+target_include_directories(lifecycle_up_cmd PUBLIC
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+  $<INSTALL_INTERFACE:include>)
+target_link_libraries(lifecycle_up_cmd utils)
+
 
 
 install(TARGETS utils_test
   DESTINATION lib/${PROJECT_NAME})
 
-install(TARGETS lifecycle_test
+install(TARGETS lifecycle_node_test
+  DESTINATION lib/${PROJECT_NAME})
+
+install(TARGETS lifecycle_service_test
+  DESTINATION lib/${PROJECT_NAME})
+
+install(TARGETS lifecycle_up_cmd
   DESTINATION lib/${PROJECT_NAME})
 
 

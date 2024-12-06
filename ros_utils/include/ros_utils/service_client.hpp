@@ -17,12 +17,11 @@
 
 #include <string>
 
-#include "nav2_util/node_utils.hpp"
 #include "rclcpp/rclcpp.hpp"
+#include "ros_utils/node_utils.hpp"
 
-namespace nav2_util
+namespace util
 {
-
 template<class ServiceT>
 class ServiceClient
 {
@@ -125,6 +124,6 @@ protected:
   typename rclcpp::Client<ServiceT>::SharedPtr client_;
 };
 
-}  // namespace nav2_util
+}  // namespace ros_utils
 
 #endif  // NAV2_UTIL__SERVICE_CLIENT_HPP_

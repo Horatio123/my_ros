@@ -18,7 +18,7 @@
 #include <cstdlib>
 #include <chrono>
 #include "rclcpp/rclcpp.hpp"
-#include "nav2_util/lifecycle_utils.hpp"
+#include "ros_utils/lifecycle_utils.hpp"
 
 using std::cerr;
 using namespace std::chrono_literals;
@@ -40,7 +40,7 @@ int main(int argc, char * argv[])
     usage();
   }
   rclcpp::init(0, nullptr);
-  nav2_util::startup_lifecycle_nodes(
+  util::startup_lifecycle_nodes(
     std::vector<std::string>(argv + 1, argv + argc),
     10s);
   rclcpp::shutdown();
