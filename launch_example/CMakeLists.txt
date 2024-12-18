@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.5)
-project(publish_test)
+project(launch_example)
 
 # Default to C99
 if(NOT CMAKE_C_STANDARD)
@@ -17,30 +17,13 @@ endif()
 
 # find dependencies
 find_package(ament_cmake REQUIRED)
-find_package(rclcpp REQUIRED)
-find_package(std_msgs REQUIRED)
 # uncomment the following section in order to fill in
 # further dependencies manually.
 # find_package(<dependency> REQUIRED)
-
-add_executable(talker src/talker.cpp)
-ament_target_dependencies(talker rclcpp std_msgs)
-add_executable(listener src/listener.cpp)
-ament_target_dependencies(listener rclcpp std_msgs)
-
-# target_include_directories(talker PUBLIC
-#   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
-#   $<INSTALL_INTERFACE:include>)
-
-install(TARGETS talker
-  DESTINATION lib/${PROJECT_NAME})
-install(TARGETS listener
-  DESTINATION lib/${PROJECT_NAME})
 # Install launch files.
 install(DIRECTORY launch
   DESTINATION share/${PROJECT_NAME}/
 )
-
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
