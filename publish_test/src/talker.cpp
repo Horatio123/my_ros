@@ -14,6 +14,7 @@ private:
     auto message = std_msgs::msg::String();
     message.data = "Hello World " + std::to_string(count_++);
     RCLCPP_INFO(this->get_logger(), "publish '%s'", message.data.c_str());
+    RCLCPP_DEBUG(this->get_logger(), "this is test for DEBUG");
     publisher_->publish(message);
   }
 
