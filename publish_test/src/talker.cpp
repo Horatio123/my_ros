@@ -37,3 +37,6 @@ int main(int argc, char **argv)
   rclcpp::shutdown();
   return 0;
 }
+
+// ros2 run publish_test talker --ros-args -p animal:=lion
+// ros2 run publish_test talker --ros-args -p animal:=lion --log-level DEBUG

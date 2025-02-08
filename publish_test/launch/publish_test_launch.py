@@ -11,7 +11,7 @@ def generate_launch_description():
         description="name an animal",
     )
     
-    animal = LaunchConfiguration("animal", default='dog')
+    animal = LaunchConfiguration("animal")
 
     return launch.LaunchDescription(
         [
@@ -24,11 +24,11 @@ def generate_launch_description():
                 parameters=[{"animal": animal}],
                 # parameters=[{"animal": LaunchConfiguration("animal")}],
             ),
-            launch_ros.actions.Node(
-                package="publish_test",
-                executable="listener",
-                name="listener",
-            ),
+            # launch_ros.actions.Node(
+            #     package="publish_test",
+            #     executable="listener",
+            #     name="listener",
+            # ),
         ]
     )
 # ros2 launch publish_test publish_test_launch.py animal:=lion
