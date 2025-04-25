@@ -1,6 +1,8 @@
 import rosbag2_py
 from rclpy.serialization import deserialize_message
 from rosidl_runtime_py.utilities import get_message
+#This error occurs because the get_message_type_hash function is only available in ROS2 Humble and newer distributions. For Foxy
+# from rosidl_runtime_py import get_message_type_hash
 
 
 def read_bag_topic(bag_path):
@@ -20,6 +22,9 @@ def read_bag_topic(bag_path):
     # 创建类型字典
     type_map = {topic.name: topic.type for topic in topics}
     print(f"type_map: {type_map}")
+
+    # hash_map = {topic.name: get_message_type_hash(topic.type) for topic in topics}
+    # print(f"hash_map: {hash_map}")
 
     # Set filter for topic of string type
     storage_filter = rosbag2_py.StorageFilter(topics=["/imu/data_raw"])
@@ -61,7 +66,7 @@ if __name__ == "__main__":
 # - /imu/data_raw [类型: sensor_msgs/msg/Imu]
 # - /joint_states [类型: sensor_msgs/msg/JointState]
 # - /JoyState [类型: std_msgs/msg/Bool]
-# - /Buzzer [类型: std_msgs/msg/Bool]
+# - /Buzzer [类型: stdr_msgs/msg/Bool]
 # - /imu/mag [类型: sensor_msgs/msg/MagneticField]
 # - /RGBLight [类型: std_msgs/msg/Int32]
 # - /edition [类型: std_msgs/msg/Float32]
