@@ -27,7 +27,8 @@ def read_bag_topic(bag_path):
     # print(f"hash_map: {hash_map}")
 
     # Set filter for topic of string type
-    storage_filter = rosbag2_py.StorageFilter(topics=["/imu/data_raw"])
+    # storage_filter = rosbag2_py.StorageFilter(topics=["/imu/data_raw"])
+    storage_filter = rosbag2_py.StorageFilter(topics=["/camera/depth/points"])
     reader.set_filter(storage_filter)
 
     # 读取所有消息
@@ -51,7 +52,8 @@ def read_bag_topic(bag_path):
 
 
 if __name__ == "__main__":
-    bag_path = "/home/ros/bags/joy.bag"
+    # bag_path = "/home/ros/bags/joy.bag"
+    bag_path = "/home/ros/bags/image.bag"
     # read_bag(bag_path)
     read_bag_topic(bag_path)
 

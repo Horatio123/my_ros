@@ -68,7 +68,7 @@ def read_bag_topic(bag_path):
     print(f"type_map: {type_map}")
 
     # Set filter for topic of string type
-    storage_filter = rosbag2_py.StorageFilter(topics=["/imu/data_raw"])
+    storage_filter = rosbag2_py.StorageFilter(topics=["/camera/depth/points"])
     reader.set_filter(storage_filter)
 
     # 读取所有消息
@@ -90,6 +90,7 @@ def read_bag_topic(bag_path):
         print(f"json_str: {json_str}")
         
         imu_info.append(message_dict)
+        break
 
     imu_info_len = len(imu_info)
     print(f"imu_info_len: {imu_info_len}")
@@ -102,7 +103,8 @@ def read_bag_topic(bag_path):
 
 
 if __name__ == "__main__":
-    bag_path = "/home/ros/bags/joy.bag"
+    # bag_path = "/home/ros/bags/joy.bag"
+    bag_path = "/home/ros/bags/image.bag"
     # read_bag(bag_path)
     read_bag_topic(bag_path)
 
@@ -121,3 +123,6 @@ if __name__ == "__main__":
 # - /imu/mag [类型: sensor_msgs/msg/MagneticField]
 # - /RGBLight [类型: std_msgs/msg/Int32]
 # - /edition [类型: std_msgs/msg/Float32]
+#source /opt/ros/foxy/setup.bash 
+#source /home/ros/rosbag2/install/setup.bash 
+#source /home/ros/rospy_message_converter/install/setup.bash 
