@@ -1,8 +1,6 @@
 import rosbag2_py
 from rclpy.serialization import deserialize_message
 from rosidl_runtime_py.utilities import get_message
-from rclpy_message_converter import message_converter
-from rclpy_message_converter import json_message_converter
 import json
 import cv2
 import numpy as np
@@ -58,7 +56,7 @@ def read_bag(bag_path):
                 print(f"不支持的图像编码格式: {msg.encoding}")
         except Exception as e:
             print(f"图像处理失败: {str(e)}")
-        # return
+        return
 
     print(f"共保存 {image_count} 张图片")
 
