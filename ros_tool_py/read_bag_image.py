@@ -56,7 +56,7 @@ def read_bag(bag_path):
                 print(f"不支持的图像编码格式: {msg.encoding}")
         except Exception as e:
             print(f"图像处理失败: {str(e)}")
-        return
+        # return
 
     print(f"共保存 {image_count} 张图片")
 
@@ -66,7 +66,7 @@ def read_bag(bag_path):
 
 if __name__ == "__main__":
     # bag_path = "/home/ros/bags/joy.bag"
-    bag_path = "/home/ros/bags/image.bag"
+    bag_path = "/home/ros/bags/data2.bag"
     read_bag(bag_path)
 
 # source /opt/ros/foxy/setup.bash
