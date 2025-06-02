@@ -52,9 +52,10 @@ void pointcloud2_to_pcd(const std::string &bag_path, const std::string &topic, c
 
 int main(int argc, char **argv)
 {
-    std::string bag_path = "/home/ros/bags/image.bag";
+    std::string bag_path = "/home/ros/bags/data2.bag";
     std::string topic = "/camera/depth/points";
-    std::string output_pcd_path = "/home/ros/my_ros/ros_tool_cpp/output/";
+    // need create the output_pcd_path first
+    std::string output_pcd_path = "/home/ros/my_ros/ros_tool_cpp/piontcloud2_to_pcd_output/";
     pointcloud2_to_pcd(bag_path, topic, output_pcd_path);
     return 0;
 }

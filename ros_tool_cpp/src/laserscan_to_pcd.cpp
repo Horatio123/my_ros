@@ -66,7 +66,8 @@ int main(int argc, char **argv)
 {
   std::string bag_path = "/home/ros/bags/data2.bag";
   std::string topic = "/scan";
-  std::string output_pcd_path = "/home/ros/my_ros/ros_tool_cpp/output/";
+  // need create the output_pcd_path first
+  std::string output_pcd_path = "/home/ros/my_ros/ros_tool_cpp/laserscan_to_pcd_output/";
   laserscan_to_pcd(bag_path, topic, output_pcd_path);
   return 0;
 }
